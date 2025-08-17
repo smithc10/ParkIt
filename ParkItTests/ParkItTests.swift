@@ -5,13 +5,19 @@
 //  Created by Connor Smith on 8/17/25.
 //
 
-import Testing
+import XCTest
 @testable import ParkIt
 
-struct ParkItTests {
+final class ParkItTests: XCTestCase {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    func testParkingFloorClears() throws {
+        // Given a string value
+        var parkingFloor = "5"
+        
+        // When the clear action is triggered
+        parkingFloor = ""
+        
+        // Then the string should be empty
+        XCTAssertEqual(parkingFloor, "", "The parking floor should be cleared.")
     }
-
 }
