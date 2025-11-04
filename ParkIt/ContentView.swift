@@ -6,24 +6,39 @@
 //
 
 // TODO:
-// add dark/light/system
-// Styling
+// add confirmation button
 
 import SwiftUI
 
 struct ContentView: View {
     @State private var parkingFloor: String = ""
+    
+       private static let dateFormatter: DateFormatter = {
+           let formatter = DateFormatter()
+           formatter.dateFormat = "EEEE, MMMM d, yyyy"
+           return formatter
+       }()
+    
     var body: some View {
         VStack {
             Spacer()
-            Image(systemName: "car")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Today is \(Date(), style: .date)")
+            HStack {
+                Image(systemName: "car")
+                    .imageScale(.large)
+                    .font(.largeTitle)
+                    .foregroundColor(.accentColor)
+                    .foregroundStyle(.tint)
+                Image(systemName: "mappin.and.ellipse") // Pin icon
+                    .imageScale(.large)
+                    .font(.largeTitle)
+                    .foregroundColor(.accentColor)
+                    .foregroundStyle(.tint)
+            }
+            Text("\(Self.dateFormatter.string(from: Date()))")
                 .font(.headline)
                 .padding()
             if !parkingFloor.isEmpty {
-                Text("You parked on floor:")
+                Text("You parked on floor")
                     .font(.title)
                     .fontWeight(.bold)
                 Text(parkingFloor)
@@ -50,6 +65,7 @@ struct ContentView: View {
                 .padding()
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
+                .frame(maxWidth: 300)
                 .padding(.horizontal)
                 .keyboardType(.numberPad)
             }
