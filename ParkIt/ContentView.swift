@@ -5,13 +5,11 @@
 //  Created by Connor Smith on 8/17/25.
 //
 
-// TODO:
-// add confirmation button
-
 import SwiftUI
 
 struct ContentView: View {
     @State private var parkingFloor: String = ""
+    @State private var showClearConfirmation: Bool = false
     
        private static let dateFormatter: DateFormatter = {
            let formatter = DateFormatter()
@@ -21,6 +19,11 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Text("ParkIt")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(.accentColor)
+                .padding(.top, 20)
             Spacer()
             HStack {
                 Image(systemName: "car")
@@ -47,7 +50,7 @@ struct ContentView: View {
                     .foregroundColor(.accentColor)
                     .padding(.top, 5)
                 Button(action: {
-                    parkingFloor = ""
+                    showClearConfirmation = true
                 }) {
                     Text("Thanks I've returned to my car")
                         .fontWeight(.bold)
@@ -57,9 +60,17 @@ struct ContentView: View {
                         .cornerRadius(20)
                 }
                 .padding(.top, 20)
+                .alert("Are you sure?", isPresented: $showClearConfirmation) {
+                    Button("No, I want to keep my floor saved", role: .cancel) { }
+                    Button("Yes, I've returned to my car", role: .destructive) {
+                        parkingFloor = ""
+                    }
+                } message: {
+                    Text("This will clear your saved parking floor.")
+                }
             } else {
                 TextField(
-                    "Hi there, what floor did you park on today?",
+                    "What floor did you park on today?",
                     text: $parkingFloor
                 )
                 .padding()
