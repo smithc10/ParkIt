@@ -1,5 +1,7 @@
 # ParkIt 📍
 
+![Swift](https://img.shields.io/badge/-Swift-FA7343?style=flat&logo=swift&logoColor=white) ![SwiftUI](https://img.shields.io/badge/-SwiftUI-0063D1?style=flat&logo=swift&logoColor=white) ![Xcode](https://img.shields.io/badge/-Xcode-147EFB?style=flat&logo=xcode&logoColor=white)
+
 A simple iOS app to remember where you parked in a parking garage, because I never can.
 
 **Save Your Floor:** Quickly save the floor number where you parked.
